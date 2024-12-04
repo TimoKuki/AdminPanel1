@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="admin-header">
       <div className="logo">
-        <h1>AdminPortal</h1>
+        <h1>Corporate Soul Killing Portal of Doom</h1>
       </div>
       <nav className="nav-links">
         <ul>
