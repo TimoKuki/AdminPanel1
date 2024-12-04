@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Dashboard.css'; // Add CSS for styling
+import './Dashboard.css'; // Ensure you have the new styles
 
 const Dashboard = () => {
   const users = [
@@ -25,34 +25,44 @@ const Dashboard = () => {
     setSelectedUser(null);
   };
 
+  const handleOverlayClick = (e) => {
+    // Close the form if the overlay is clicked
+    if (e.target === e.currentTarget) {
+      setSelectedUser(null);
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <h2>User Data Dashboard</h2>
 
-      {/* Display Form if a user is selected */}
+      {/* Modal Overlay */}
       {selectedUser && (
-        <div className="user-form">
-          <div className="form-header">
-            <h3>Edit User Details</h3>
-            <button onClick={handleCloseForm} className="close-btn">X</button>
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+          <div className="user-form">
+            <div className="form-header">
+              <h3>Edit User Details</h3>
+              <button onClick={handleCloseForm} className="close-btn">X</button>
+            </div>
+            <form>
+              <div>
+                <label>Name:</label>
+                <input type="text" value={selectedUser.name} readOnly />
+              </div>
+              <div>
+                <label>Email:</label>
+                <input type="text" value={selectedUser.email} readOnly />
+              </div>
+              <div>
+                <label>Role:</label>
+                <input type="text" value={selectedUser.role} readOnly />
+              </div>
+            </form>
           </div>
-          <form>
-            <div>
-              <label>Name:</label>
-              <input type="text" value={selectedUser.name} readOnly />
-            </div>
-            <div>
-              <label>Email:</label>
-              <input type="text" value={selectedUser.email} readOnly />
-            </div>
-            <div>
-              <label>Role:</label>
-              <input type="text" value={selectedUser.role} readOnly />
-            </div>
-          </form>
         </div>
       )}
 
+      {/* Table */}
       <table className="user-table">
         <thead>
           <tr>
