@@ -11,7 +11,6 @@ function App() {
       <main>
       <main>
         <Dashboard />
-        <h1>Mories</h1>
       </main>
       </main>
       <Footer />
