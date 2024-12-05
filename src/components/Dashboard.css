@@ -35,6 +35,7 @@
   
   .user-table tr:hover {
     background-color: #ddd;
+    cursor: pointer;
   }
   
   /* Modal Overlay */
