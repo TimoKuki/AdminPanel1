@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Dashboard.css'; // Ensure you have the new styles
+import React from 'react';
+import './Dashboard.css'; // Add CSS for styling
 
 const Dashboard = () => {
   const users = [
@@ -15,54 +15,9 @@ const Dashboard = () => {
     { id: 10, name: 'Linda Purple', email: 'linda.purple@example.com', role: 'User' },
   ];
 
-  const [selectedUser, setSelectedUser] = useState(null);
-
-  const handleRowClick = (user) => {
-    setSelectedUser(user);
-  };
-
-  const handleCloseForm = () => {
-    setSelectedUser(null);
-  };
-
-  const handleOverlayClick = (e) => {
-    // Close the form if the overlay is clicked
-    if (e.target === e.currentTarget) {
-      setSelectedUser(null);
-    }
-  };
-
   return (
     <div className="dashboard-container">
       <h2>User Data Dashboard</h2>
-
-      {/* Modal Overlay */}
-      {selectedUser && (
-        <div className="modal-overlay" onClick={handleOverlayClick}>
-          <div className="user-form">
-            <div className="form-header">
-              <h3>Edit User Details</h3>
-              <button onClick={handleCloseForm} className="close-btn">X</button>
-            </div>
-            <form>
-              <div>
-                <label>Name:</label>
-                <input type="text" value={selectedUser.name} readOnly />
-              </div>
-              <div>
-                <label>Email:</label>
-                <input type="text" value={selectedUser.email} readOnly />
-              </div>
-              <div>
-                <label>Role:</label>
-                <input type="text" value={selectedUser.role} readOnly />
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Table */}
       <table className="user-table">
         <thead>
           <tr>
@@ -74,7 +29,7 @@ const Dashboard = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} onClick={() => handleRowClick(user)}>
+            <tr key={user.id}>
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
