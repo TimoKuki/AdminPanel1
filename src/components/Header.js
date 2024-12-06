@@ -1,25 +1,21 @@
 import React from 'react';
-import './Header.css'; // For styling
+import { Link } from 'react-router-dom';
+import './Header.css'; // Add styles for Header
 
 const Header = () => {
   return (
-    <header className="admin-header">
-      <div className="logo">
-        <h1>Corporate Soul Killing Portal of Doom</h1>
-      </div>
-      <nav className="nav-links">
-        <ul>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/settings">Settings</a></li>
-          <li><a href="/profile">Profile</a></li>
+    <header className="header">
+      <h1>Admin Portal</h1>
+      <nav>
+        <ul className="nav-links">
+          <li><Link to="/">Dashboard</Link></li>
+          <li><Link to="/settings">Settings</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
         </ul>
       </nav>
-      <div className="user-info">
-        <span className="username">John Doe</span>
-        <button className="logout-btn">Logout</button>
-      </div>
     </header>
   );
 };
 
 export default Header;
+
